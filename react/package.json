@@ -1,6 +1,6 @@
 {
   "name": "streamator-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Frontend primitives for displaying live log streams",
   "author": "Arved Klöhn <arved.kloehn@gmail.com>",
   "license": "MIT",
