@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "streamator"
+version = "0.1.0"
+description = "Backend logging primitive for long-running async jobs"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dynamo  = ["dynamorator>=0.1.6"]
+fastapi = ["fastapi>=0.133.1"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

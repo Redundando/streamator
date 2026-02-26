@@ -1,0 +1,17 @@
+# Secrets
+.env
+*.pem
+
+# Python
+__pycache__/
+*.egg-info/
+.venv/
+dist/
+build/
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
