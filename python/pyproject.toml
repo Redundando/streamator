@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "streamator"
-version = "0.1.0"
+version = "0.1.1"
 description = "Backend logging primitive for long-running async jobs"
 readme = "README.md"
 license = { text = "MIT" }
