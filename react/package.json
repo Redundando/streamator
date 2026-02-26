@@ -9,7 +9,8 @@
       "import": "./dist/index.esm.js",
       "require": "./dist/index.cjs.js"
     },
-    "./log.css": "./dist/log.css"
+    "./log.css": "./dist/log.css",
+    "./log-compat.css": "./dist/log-compat.css"
   },
   "files": ["dist"],
   "scripts": {

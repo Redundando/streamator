@@ -15,6 +15,8 @@ def _get(job_id: str) -> JobLogger | None:
 async def _sse_generator(logger: JobLogger):
     async for entry in logger._store.stream():
         yield f"data: {json.dumps(entry)}\n\n"
+    yield f"data: {json.dumps({'event': 'done'})}\n\n"
+    _loggers.pop(logger.job_id, None)
 
 
 def make_stream_response(job_id: str) -> StreamingResponse:
@@ -37,4 +39,7 @@ def add_log_routes(app: FastAPI, prefix: str = "/log"):
         logger = _get(job_id)
         if logger is None:
             return JSONResponse({"error": "not found"}, status_code=404)
-        return {"logs": logger._store.snapshot()}
+        logs = logger._store.snapshot()
+        if logger._store._closed:
+            logs = logs + [{"event": "done"}]
+        return {"logs": logs}

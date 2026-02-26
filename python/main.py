@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from streamator import JobLogger
 from streamator.fastapi import add_log_routes
 
-app = FastAPI()
+app = FastAPI() #
 add_log_routes(app)
 
 

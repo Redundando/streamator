@@ -3,7 +3,6 @@ import uuid
 
 from .store import MemoryStore, DynamoStore
 
-
 class JobLogger:
     def __init__(self, store="memory", **kwargs):
         self.job_id = str(uuid.uuid4())
@@ -37,4 +36,10 @@ class JobLogger:
 
     def close(self):
         self._store.close()
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *_):
+        self.close()
 

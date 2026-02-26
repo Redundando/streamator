@@ -6,8 +6,21 @@ build-backend = "setuptools.build_meta"
 name = "streamator"
 version = "0.1.0"
 description = "Backend logging primitive for long-running async jobs"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Arved Klöhn", email = "arved.kloehn@gmail.com" }]
+keywords = ["streaming", "logging", "sse", "fastapi", "async"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: FastAPI",
+    "Intended Audience :: Developers",
+]
 requires-python = ">=3.10"
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Redundando/streamator"
+Repository = "https://github.com/Redundando/streamator"
 
 [project.optional-dependencies]
 dynamo  = ["dynamorator>=0.1.6"]

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLogStream, LogPanel } from "streamator-react";
-import "streamator-react/log.css";
+import "../../react/src/log.css";
 
 export default function App() {
   const [jobId, setJobId] = useState(null);

@@ -12,6 +12,7 @@ export function useLogStream(url, options = {}) {
     text: formatEvent ? formatEvent(raw) : (raw.message ?? ""),
     level: raw.level ?? "info",
     t: fmt(raw.t ?? elapsed),
+    _done: raw.event === "done",
   });
 
   useEffect(() => {
@@ -42,7 +43,10 @@ export function useLogStream(url, options = {}) {
           const elapsed = (Date.now() - startRef.current) / 1000;
           const newEntries = all.slice(seen).map((raw) => toEntry(raw, elapsed));
           seen = all.length;
-          if (newEntries.length) setLogs((l) => [...l, ...newEntries.filter(e => e.text !== null)]);
+          const done = newEntries.some((e) => e._done);
+          const visible = newEntries.filter((e) => !e._done && e.text !== null);
+          if (visible.length) setLogs((l) => [...l, ...visible]);
+          if (done) { clearInterval(id); setActive(false); }
         } catch {}
       }, interval);
       return () => { clearInterval(id); setActive(false); };
