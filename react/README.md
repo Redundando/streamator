@@ -47,6 +47,7 @@ const { logs, active } = useLogStream(url, {
   className="my-log"                   // appended to root class
   style={{}}
   renderEntry={(entry, i) => <div />}  // fully custom row renderer
+  autoScroll={true}                    // set false to disable auto-scroll
 />
 ```
 

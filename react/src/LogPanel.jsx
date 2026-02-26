@@ -9,12 +9,14 @@ export function LogPanel({
   className,
   style,
   renderEntry,
+  autoScroll = true,
 }) {
-  const bottomRef = useRef(null);
+  const panelRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [logs]);
+    if (autoScroll && panelRef.current)
+      panelRef.current.scrollTop = panelRef.current.scrollHeight;
+  }, [logs, autoScroll]);
 
   if (!active && logs.length === 0) return null;
 
@@ -24,6 +26,7 @@ export function LogPanel({
 
   return (
     <div
+      ref={panelRef}
       className={["streamator-log", className].filter(Boolean).join(" ")}
       style={rootStyle}
     >
@@ -48,7 +51,6 @@ export function LogPanel({
           </div>
         )
       )}
-      <div ref={bottomRef} />
     </div>
   );
 }
