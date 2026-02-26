@@ -1,0 +1,37 @@
+.streamator-log {
+  background: var(--streamator-bg, #f8f8f8);
+  border: 1px solid var(--streamator-border, #e0e0e0);
+  border-radius: var(--streamator-radius, 6px);
+  color: var(--streamator-color, #444);
+  font-size: var(--streamator-font-size, 0.8rem);
+  max-height: var(--streamator-max-height, 160px);
+  overflow-y: auto;
+  padding: 8px 10px;
+  font-family: monospace;
+}
+
+.streamator-log-entry {
+  display: flex;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.streamator-log-time {
+  color: var(--streamator-time-color, #aaa);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.streamator-log-entry--success { color: var(--streamator-success-color, #2e7d32); }
+.streamator-log-entry--warning { color: var(--streamator-warning-color, #f59e0b); }
+.streamator-log-entry--error   { color: var(--streamator-error-color, #c62828); }
+
+.streamator-log-waiting {
+  color: var(--streamator-time-color, #aaa);
+  animation: streamator-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes streamator-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "streamator-react",
+  "version": "0.1.0",
+  "description": "Frontend primitives for displaying live log streams",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./log.css": "./dist/log.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "rollup": "^4.0.0",
+    "rollup-plugin-postcss": "^4.0.0"
+  }
+}
