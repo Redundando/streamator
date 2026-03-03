@@ -56,7 +56,7 @@ emitter.set_result({"count": 42})               # store final result for later r
 emitter.close()                                  # idempotent; sends done sentinel
 ```
 
-Calling `emit()` or `log()` after `close()` logs a warning and no-ops.
+Calling `emit()` or `log()` after `close()` logs a warning and no-ops. Non-JSON-serializable values in `emit()` are converted to strings automatically.
 
 ### Class methods
 

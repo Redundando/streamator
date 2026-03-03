@@ -258,3 +258,19 @@ def test_job_cancel_route(job_app_client):
     resp = job_app_client.post(f"/job/{emitter.job_id}/cancel")
     assert resp.status_code == 200
     assert resp.json()["cancelled"] == emitter.job_id
+
+
+def test_job_stream_non_serializable(job_app_client):
+    class Unserializable:
+        pass
+
+    emitter = JobEmitter()
+    emitter.emit({"event": "test", "obj": Unserializable()})
+    emitter.close()
+
+    with job_app_client.stream("GET", f"/job/{emitter.job_id}/stream") as resp:
+        assert resp.status_code == 200
+        chunks = list(resp.iter_lines())
+
+    data_lines = [l for l in chunks if l.startswith("data:")]
+    assert any("test" in l for l in data_lines)

@@ -15,7 +15,7 @@ def _get(job_id: str) -> JobLogger | None:
 
 async def _sse_generator(logger: JobLogger):
     async for entry in logger._store.stream():
-        yield f"data: {json.dumps(entry)}\n\n"
+        yield f"data: {json.dumps(entry, default=str)}\n\n"
     yield f"data: {json.dumps({'event': 'done'})}\n\n"
     _loggers.pop(logger.job_id, None)
 
@@ -61,7 +61,7 @@ def _get_emitter(job_id: str):
 
 async def _emitter_sse_generator(emitter):
     async for entry in emitter._logger._store.stream():
-        yield f"data: {json.dumps(entry)}\n\n"
+        yield f"data: {json.dumps(entry, default=str)}\n\n"
     yield f"data: {json.dumps({'event': 'done'})}\n\n"
     from .emitter import _emitters
     _emitters.pop(emitter.job_id, None)
