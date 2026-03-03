@@ -5,8 +5,9 @@
 streamator/
 ├── python/                        ← PyPI package: streamator
 │   ├── streamator/
-│   │   ├── __init__.py            ← Public API: exports JobLogger only
+│   │   ├── __init__.py            ← Public API: exports JobLogger, JobEmitter
 │   │   ├── logger.py              ← JobLogger class
+│   │   ├── emitter.py             ← JobEmitter class, start_reaper
 │   │   ├── store.py               ← MemoryStore, DynamoStore
 │   │   └── fastapi.py             ← Optional FastAPI route helpers
 │   ├── tests/

@@ -52,9 +52,9 @@
 - [x] Deprecation warning on `add_log_routes`
 
 ### Step 6 — Documentation
-- [ ] Update / create `python/.ai-docs/streamator.md` with `JobEmitter` API reference
-- [ ] Update `specs.md` with `JobEmitter` section and migration guide
-- [ ] Update `structure.md` memory-bank doc to include `emitter.py`
+- [x] Update / create `python/.ai-docs/streamator.md` with `JobEmitter` API reference
+- [x] Update `specs.md` with `JobEmitter` section and migration guide
+- [x] Update `structure.md` memory-bank doc to include `emitter.py`
 
 ---
 
